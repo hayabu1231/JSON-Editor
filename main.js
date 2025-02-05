@@ -25,7 +25,7 @@ function JSON2HTML(data) {
         let title = 'JSONを開けませんでした。';
         let message = error.message;
         message = message.replaceAll(/JSON(?: |\.)(?:P|p)arse(?: error|): /g, 'JSONの解析に問題が発生しました。\n');
-        message = message.replaceAll(/(.*) at line (.*) column (.*) of the JSON data/g, '「$2」行目の「$3」文字目付近で$1');
+        message = message.replaceAll(/(.*)(?: in JSON|) at(?: position 1) (?:\(|)line (\d*) column (\d*)(?:\)|)(?: of the JSON data|)/g, '「$2」行目の「$3」文字目付近で$1');
         message = message.replaceAll(/(?:U|u)nexpected (?:EOF|end of data)/g, 'JSONの構文の捜索中にデータの最後に到達してしまい、JSON構文を見つけられませんでした。');
         message = message.replaceAll(/(?:U|u)nterminated string/g, '文字列が最後まで続いていて閉じられていません。「"」が脱落している又は「“」や「”」になってしまっている可能性があります。');
         message = message.replaceAll('Unable to parse JSON string', 'このデータではJSONの解析が不可能です。構文エラーなどがないか再度ご確認ください。');
@@ -42,6 +42,7 @@ function JSON2HTML(data) {
         message = message.replaceAll('property name', 'プロパティの名前');
         message = message.replaceAll('property value', 'プロパティの値');
         message = message.replaceAll(' or ', 'または');
+        message = message.replaceAll(' in JSON', '');
         message = message.replaceAll(/(?:"|')(.*?)(?:'|")/g, '「$1」');
         alert(`${title}\n\n〜エラー詳細〜\n${message}`);
         throw new Error(error);
