@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>JSON viewer</h1>
+        <menu>
+            <li><button id="info-open" class="menu-item">情報</button></li>
+            <li><button id="import-open" class="menu-item">読み込み</button></li>
+        </menu>
+    </header>
+
+    <dialog id="info-dialog">
+        <form class="item" method="dialog">
+            <h2 class="item-name">このアプリについて</h2>
+            <p>
+                このアプリはJSONファイルを視覚的に見やすく確認、編集できるようにするためのアプリです。<br>
+                なお、編集機能は準備中です。
+            </p>
+            <button class="item" data-level="1">閉じる</button>
+        </form>
+    </dialog>
+    <dialog id="import-form">
+        <div class="item">
+            <h2 class="item-name">読み込み</h2>
+            <label class="item" data-level="1">
+                <h3 class="item-name">ファイルから読み込む</h3>
+                <input id="import-file" class="item" data-level="2" type="file" accept=".json,.txt">
+            </label>
+            <div class="item" method="dialog" data-level="1">
+                <h3 class="item-name">テキストデータを入力</h3>
+                <textarea id="import-text" class="item" data-level="2" placeholder="ここに入力してください。"></textarea>
+                <button id="import-text-submit" class="item" data-level="2">読み込む</button>
+            </div>
+            <form class="item" method="dialog" data-level="1">
+                <button class="item" data-level="2">閉じる</button>
+            </form>
+        </div>
+    </dialog>
+
+    <main>
+        <div id="body" class="item">
+    </main>
+
+    <footer>
+        &copy;hayabu1231<br>
+        このページはhayabu1231により作成されました。無断転載はご遠慮ください。
+    </footer>
+
+</body>
+
+</html>
